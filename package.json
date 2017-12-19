@@ -1,0 +1,25 @@
+{
+  "name": "committed_testers_api_framework",
+  "version": "1.0.0",
+  "description": "committed Tester's API Framework",
+  "main": "conf.js",
+  "dependencies": {
+    "mocha": "^4.0.1",
+    "icedfrisby": "^1.5.0"
+  },
+  "devDependencies": {
+    "joi": "^13.0.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "undefined"
+  },
+  "keywords": [
+    "tbd"
+  ],
+  "author": "committed Tester",
+  "license": "UNLICENSED"
+}
