@@ -1,11 +1,19 @@
 const frisby = require('icedfrisby');
 const Joi = require('joi');
 
-const URL = 'http://swapi.co//api/';
+const URL = 'https://swapi.co//api/';
 
-frisby.create('a test')
+frisby.globalSetup({
+    timeout: 3000
+  });
+
+  frisby.create('TEST 1: confirm that the planet API works')
     .get(URL +"planets/1/")
     .expectStatus(200)
+    .inspectJSON()
+    .expectJSONTypes('arg', {
+        created:String()
+    })
     .expectJSON({
     name: "Tatooine", 
     rotation_period: "23", 
@@ -41,9 +49,24 @@ frisby.create('a test')
     })    
     .afterJSON(function(response)
         {           
-          console.log("response returned ",response); 
+          console.log("TEST 1: response returned "); 
         })
-    
-    // any number of additional expect statements here
     .toss();
 
+
+    
+frisby.create('TEST 2: confirm that the planet API returns a correct film')
+    .get(URL +"planets/1/")  
+    .expectStatus(200)        
+    .afterJSON(function(json){  
+        var filmURL = json.films[0]  
+        console.log("URL to test is: "+ filmURL);      
+          frisby.create('TEST 2B Confirm planet API film')  
+            .get(filmURL)            
+            .expectStatus(200) 
+            .afterJSON(function(json) {
+                expect(json.title).contain('Attack of the Clones');
+                })
+            .toss()
+        })
+    .toss()

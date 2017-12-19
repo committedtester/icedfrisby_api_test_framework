@@ -5,7 +5,5 @@
 # To Execute
 * Run 'mocha' from the terminal
 
-
 # Notes
-* Good learning articles include
-https://ptmccarthy.github.io/2014/06/28/rest-testing-with-frisby/ 
+* Refer to https://github.com/IcedFrisby/IcedFrisby/blob/master/API.md
